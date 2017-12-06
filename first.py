@@ -16,11 +16,11 @@ for line in f:
     i = i+1
 f.closed
 
-# setup data
 
-ga = pyeasyga.GeneticAlgorithm(read_data)        # initialise the GA with data
 
-# define a fitness function
+ga = pyeasyga.GeneticAlgorithm(read_data)
+
+# фитнес-функция
 def fitness(individual, data):
     values, weights, volumes = 0, 0, 0
     for selected, box in zip(individual, data):
@@ -32,13 +32,12 @@ def fitness(individual, data):
         values = 0
     return values
 
-ga.fitness_function = fitness               # set the GA's fitness function
-ga.run()                                    # run the GA
-print (ga.best_individual()  )                # print the GA's best solution
+ga.fitness_function = fitness
+ga.run()
+print (ga.best_individual()  )
 
 res = ga.best_individual()
 
-#Смотрим, какие предметы вошли в лучший вариант
 items = []
 i=1
 for item in res[1]:
@@ -46,7 +45,6 @@ for item in res[1]:
         items.append(i)
     i= i+1
 
-#Считаем по предметам результирующие показатели
 wr,vr = 0,0
 for box in items:
     wr += read_data[box-1].get('weight')
@@ -62,7 +60,7 @@ jsargs = {
         "volume" : vr,
         "items" : items
     }
-    #"2": {"movie " + str(best+1) : firstTask["movie "+str(best+1)]}
+
 }
 head = {'content-type': 'application/json'}
 print()
