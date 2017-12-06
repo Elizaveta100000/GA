@@ -16,11 +16,8 @@ for line in f:
     i = i+1
 f.closed
 
-
-
 ga = pyeasyga.GeneticAlgorithm(read_data)
 
-# фитнес-функция
 def fitness(individual, data):
     values, weights, volumes = 0, 0, 0
     for selected, box in zip(individual, data):
@@ -45,19 +42,19 @@ for item in res[1]:
         items.append(i)
     i= i+1
 
-wr,vr = 0,0
+w,v = 0,0
 for box in items:
-    wr += read_data[box-1].get('weight')
-    vr += read_data[box-1].get('volume')
-vr = math.ceil(vr)
+    w += read_data[box-1].get('weight')
+    v += read_data[box-1].get('volume')
+v = math.ceil(v)
 
 reg_a = 'https://cit-home1.herokuapp.com/api/ga_homework'
 jsargs = {
     "user":34,
     "1": {
         "value" : res[0],
-        "weight" : wr,
-        "volume" : vr,
+        "weight" : w,
+        "volume" : v,
         "items" : items
     }
 
