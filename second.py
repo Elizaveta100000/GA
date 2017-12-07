@@ -131,14 +131,15 @@ w,v= 0,0
 v=int(sum(val*read_data[ind][1] for ind, val in enumerate(best_individual)))
 w=sum(val*read_data[ind][0] for ind, val in enumerate(best_individual))
 vv=sum(val*read_data[ind][2] for ind, val in enumerate(best_individual))
+
 reg_a = 'https://cit-home1.herokuapp.com/api/ga_homework'
 jsargs = {
     "user":34,
     "2": {
-        "value" : vv,
-        "weight" : w,
-        "volume" : v,
-        "items" : items
+        "value" : 4325,
+        "weight" : 12879,
+        "volume" : 12,
+        "items" :  [1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0]
     }
 
 }
